@@ -52,7 +52,7 @@ class ThreadedClient(threading.Thread):
 
 
     def receive_file(self, sck: socket.socket, filename):
-
+        
         logger.info(f' Cliente #{self.numcliente}: Inicio de la transferencia del archivo.') 
 
         
@@ -74,9 +74,11 @@ class ThreadedClient(threading.Thread):
                     f.write(data)
                     self.s.settimeout(2)
                     data,addr = self.s.recvfrom(self.buff_size)
+                    #tamano = self.s.recvfrom(self.buff_size)
+                    #print(tamano)
                 print(addr)
             except socket.timeout:
-                print("exception")
+                print("Conexión terminada")
                 f.close()
             time_end = round(time.time()-time_start, 5)
             logger.info(f' Cliente #{self.numcliente}: El archivo fue recibido con exito. El tiempo de transferencia fue: {time_end} segundos. El tamaño final del archivo recibido es de {os.path.getsize(filename)}') 
@@ -85,13 +87,13 @@ class ThreadedClient(threading.Thread):
             logger.info(f' Cliente #{self.numcliente}: La transferencia no fue exitosa.') 
        
 
-SERVER_IP = "192.168.9.103"
+#SERVER_IP = "192.168.9.103"
 
 barrier = None
-#n_conn = int(input('Ingrese el número de conexiones: '))
-#tipo_archivo = int(input('Ingrese "0" si desea recibir un archivo de 100MB y "1" si desea uno de 250MB: '))
+n_conn = int(input('Ingrese el número de conexiones: '))
+tipo_archivo = int(input('Ingrese "0" si desea recibir un archivo de 100MB y "1" si desea uno de 250MB: '))
 n_conn = 4
-tipo_archivo = "0"
+#tipo_archivo = "0"
 
 # Creación del logger
 ## Fecha de la prueba

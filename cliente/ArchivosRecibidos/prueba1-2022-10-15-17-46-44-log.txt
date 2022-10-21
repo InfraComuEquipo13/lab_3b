@@ -1,7 +1,0 @@
-2022-10-15 17:46:44.123 INFO      AppCliente: Iniciando la aplicación de clientes con el servidor DESKTOP-J1GSMA7 en el puerto 20001.
-2022-10-15 17:46:44.123 INFO      AppCliente: Iniciando la conexión del cliente 1.
-2022-10-15 17:46:44.123 INFO      Cliente #1: Estableciendo conexión con el servidor.
-2022-10-15 17:46:44.123 INFO      Cliente #1: Conexión con el servidor exitosa en el puerto 20001.
-2022-10-15 17:46:44.124 INFO      Cliente #1: A la espera de que los demás clientes se conecten y envíen el tipo de archivo. Van 1
-2022-10-15 17:46:44.124 INFO      Cliente #1: Inicio de la transferencia del archivo.
-2022-10-15 17:46:44.126 INFO      Cliente #1: La transferencia no fue exitosa.

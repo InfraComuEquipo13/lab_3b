@@ -37,12 +37,14 @@ def on_new_client(addr, num_cliente, filename):
     try:
         tiempo_envio = send_file(addr, filename)
         tiempo_envio = round(tiempo_envio, 5) 
-        print("Llegué hasta acá")
+        #print("Llegué hasta acá")
         logger_s.info(f' Server-Cliente #{num_cliente}: Envio finalizado con exito. El tiempo de transferencia fue de {tiempo_envio} segundos.') 
+        #udp_socket.sendto(filename, address)
+
     except:
         logger_s.info(f' Server-Cliente #{num_cliente}: Envio finalizado sin exito.') 
      
-    print("Llegué hasta acá")
+   # print("Llegué hasta acá")
     barrier.wait()
 
 
@@ -71,8 +73,8 @@ logger_s.info(' Server: Esperando por clientes.')
 udp_socket.bind((host, port))        # Bind to the port
 
 lista_clientes = []
-#num_total_clientes = int(input("Digite el número máximo de conexiones: "))
-num_total_clientes = 4
+num_total_clientes = int(input("Digite el número máximo de conexiones: "))
+#num_total_clientes = 4
 
 num_cliente_actual = 1
 filename = ""
