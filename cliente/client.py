@@ -52,7 +52,16 @@ class ThreadedClient(threading.Thread):
 
 
     def receive_file(self, sck: socket.socket, filename):
-        
+        file0 = "archivo_100mb.zip"
+        file1 = "archivo_250mb.zip"
+        file0size= "111085193B"
+        file1size= "249224393B"
+
+        if self.tipo_archivo == 0:
+            logger.info(f' El nombre del archivo es {file0}. El tamaño real del archivo es de: {file0size}') 
+        else: 
+            logger.info(f' El nombre del archivo es {file1}. El tamaño real del archivo es de: {file1size}') 
+
         logger.info(f' Cliente #{self.numcliente}: Inicio de la transferencia del archivo.') 
 
         
@@ -92,7 +101,7 @@ class ThreadedClient(threading.Thread):
 barrier = None
 n_conn = int(input('Ingrese el número de conexiones: '))
 tipo_archivo = int(input('Ingrese "0" si desea recibir un archivo de 100MB y "1" si desea uno de 250MB: '))
-n_conn = 4
+#n_conn = 4
 #tipo_archivo = "0"
 
 # Creación del logger

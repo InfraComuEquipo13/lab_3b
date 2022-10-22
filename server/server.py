@@ -19,6 +19,7 @@ def send_file(address, filename):
         if(udp_socket.sendto(data, address)):
             data = f.read(buff_size)
             #time.sleep(0.02) # Give receiver a bit time to save
+            #print(buff_size)
     f.close()
     return time.time() - time_start
 
@@ -28,8 +29,8 @@ def on_new_client(addr, num_cliente, filename):
     
 
          
-    logger_s.info(f' Server-Cliente #{num_cliente}:' + 
-                 'Enviando el nombre del archivo al cliente.')
+    #logger_s.info(f' Server-Cliente #{num_cliente}:' + 
+                 #'Enviando el nombre del archivo al cliente.')
     #udp_socket.sendto(filename, address)
 
 
@@ -84,8 +85,8 @@ while num_cliente_actual <= num_total_clientes:
 
     tipo_archivo_msg = bytesAddressPair[0]
     address = bytesAddressPair[1]
-    
-    filename = filename_0 if str(tipo_archivo_msg ) == '0' else filename_1
+    print(tipo_archivo_msg.decode())
+    filename = filename_0 if tipo_archivo_msg.decode() == '0' else filename_1
     logger_s.info(f' Server-Cliente #{address}: ' 
                      +  f'El tipo de archivo solicitado por el cliente es {filename} ({tipo_archivo_msg}) cuyo tamaño es de {os.path.getsize(filename)}B .')   
     num_cliente_actual+=1
